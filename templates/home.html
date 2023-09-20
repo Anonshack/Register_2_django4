@@ -1,0 +1,9 @@
+{% block title %}
+    <h2>Info Page</h2>
+{% endblock %}<br><br>
+
+{% for i in temp %}
+    <a href="{% url 'post_detail' pk=i.id %}" style="font-size: 20px;">{{ i.id }}: {{ i.name }}</a><br><br>
+{% endfor %}
+
+<a href="{% url 'base' %}" style="font-size: 20px; color: red;">Home</a>

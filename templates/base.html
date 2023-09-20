@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Django
+        {% endblock %}
+    </title>
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+    <div style="float: right">
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+              <span>Xush Kelibsiz: {{ user.username}}</span>
+              <div class="dropdown-content">
+                <p><a href="/accounts/logout">Chiqish</a></p>
+              </div>
+            </div>
+        {% else %}
+            <a href="/accounts/login/">Kirish</a> || <a href="/accounts/register/">Registratsiya</a>
+        {% endif %}
+    </div>
+    <h1><a href="{% url 'home' %}">Django</a></h1>
+        <a href="{% url 'home' %}" style="font-size: 22px; color: green">Person List</a>
+    {% block content %}
+
+    {% endblock %}
+
+<footer>
+    <h2><a href="{% url 'new_post' %}">Yangi post yozish</a></h2>
+</footer>
+
+</body>
+</html>
